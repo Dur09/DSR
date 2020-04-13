@@ -9,6 +9,7 @@ const dsrModel = new Schema(
         ttitle: { type: String },
         status: { type: String },
         comments: { type: String },
+        ts: { type: Date },
     }
 );
 

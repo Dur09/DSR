@@ -22,7 +22,7 @@ function routes(Dsr) {
         return res.json(dsrs);
       });
     });
-  // Middle to findDsrById
+  // Middleware to findDsrById
   dsrRouter.use('/dsr/:dsrId', (req, res, next) => {
     Dsr.findById(req.params.dsrId, (err, dsr) => {
       if (err) {
@@ -35,6 +35,7 @@ function routes(Dsr) {
       return res.sendStatus(404);
     });
   });
+
   dsrRouter.route('/dsr/:dsrId')
     .get((req, res) => res.json(req.dsr))
     .put((req, res) => {
@@ -44,6 +45,7 @@ function routes(Dsr) {
       dsr.ttitle = req.body.ttitle;
       dsr.status = req.body.status;
       dsr.comments = req.body.comments;
+      dsr.ts = req.body.ts;
       req.dsr.save((err) => {
         if (err) {
           return res.send(err);
